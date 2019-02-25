@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Vericert</title>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/main.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <style>
+  table {
+      border-collapse: collapse;
+      width: 100%;
+  }
+
+  td, th {
+      border: 1px solid #405f89;
+      text-align: left;
+      padding: 8px;
+  }
+
+  /* tr:nth-child(even) {
+      background-color: #405f89;
+      color: white; */
+  }
+  </style>
+  </head>
+
+<body>
+  <nav class="navbar navbar-light bg-light">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#"><img src="../static/images/logo_white.png" alt="VeriCert"/></a>
+    </div>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="nav-item" >
+            <a class="nav-link" href="chain">Blocks</a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="new">New Transaction</a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="mine_block">Mine Block</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="nodes">Nodes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="update">Get Updates</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="logout">Sign Out</a>
+          </li>
+        </ul>
+      </div>
+      </nav>
+
+      <div class="container">
+        {% set x = 1 %}
+        {% if node_info == "" %}
+        <h3>There are no active nodes</h3>
+        {% else %}
+        <h3>No. of active node(s) is {{ length }}</h3>
+        <table>
+          <tr>
+            <th>S/N</th>
+            <th>IP</th>
+            <th>Address</th>
+          </tr>
+          {% for node in node_info %}
+          <tr>
+            <td>{{ x }}</td>
+            <td>{{ node[0] }}</td>
+            <td>{{ node[1] }}</td>
+          </tr>
+          {% set x = x + 1 %}
+          {% endfor %}
+        </table>
+        {% endif %}
+    </div>
+
+    <footer>
+        <p>&copy; University of Bedfordshire 2018</p>
+    </footer>
+  </body>
+</html>

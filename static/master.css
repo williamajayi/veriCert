@@ -1,0 +1,82 @@
+body{
+  padding: 0px;
+  height: 100%;
+  background-image: url("images/bg.jpeg");
+  background-color: rgba(0,0,0,0.60);
+  background-blend-mode: darken;
+}
+
+.navbar {
+ min-height: 100px;
+ /* background-color: black; */
+ border-radius: 0px;
+ background-color: transparent;
+}
+
+.navbar-brand {
+ padding: 20px;
+ height: 100px;
+ line-height: 100px;
+}
+
+.nav{
+  padding-top: 20px;
+}
+
+.nav-link{
+  color: white;
+}
+
+.nav>li>a:hover{
+  background-color: transparent;
+}
+
+.active{
+  border-bottom: 2px solid white;
+}
+
+section{
+  margin: auto;
+  padding-top: 20px;
+  height: 80px;
+  width: 650px;
+  border: 1px solid black;
+  background-color: black;
+}
+
+.form-inline{
+  padding-top: 130px;
+  padding-bottom: 20px;
+  text-align: center;
+}
+
+.form-inline h2{
+  color: white;
+}
+
+.input-group-addon a{
+  font-weight: bold;
+  font-size: 20px;
+  color: black;
+}
+
+#txtHash{
+  width: 520px;
+  height: 40px;
+}
+
+.input-group-addon a:hover{
+  text-decoration: none;
+}
+
+footer{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: transparent;
+  text-align: center;
+  color: white;
+  font-size: small;
+}

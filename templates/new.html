@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Vericert</title>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/main.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  </head>
+
+<body>
+  <nav class="navbar navbar-light bg-light">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#"><img src="../static/images/logo_white.png" alt="VeriCert"/></a>
+    </div>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="nav-item" >
+            <a class="nav-link" href="chain">Blocks</a></li>
+          <li class="nav-item active">
+            <a class="nav-link" href="new">New Transaction</a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="mine_block">Mine Block</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="nodes">Nodes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="update">Get Updates</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="logout">Sign Out</a>
+          </li>
+        </ul>
+      </div>
+      </nav>
+
+      <div class="container">
+        <div class="body">
+          <h2 style="text-align: center;">Post New Transaction</h2>
+
+          <form class="form-signin" action="/new_transaction" method="POST">
+
+          <label for="issuing_body" class="sr-only">Issuing Body</label>
+          <input type="text" name="issuing_body" id="issuing_body" class="form-control" placeholder="Issuing body" required autofocus>
+
+          <label for="candidate_name" class="sr-only">Candidate name</label>
+          <input type="text" name="candidate_name" id="candidate_name" class="form-control" placeholder="Candidate name" required>
+
+          <label for="candidate_degree" class="sr-only">Candidate degree</label>
+          <input type="text" name="candidate_degree" id="candidate_degree" class="form-control" placeholder="Candidate degree" required>
+
+          <label for="issue_date" class="sr-only">Issued date</label>
+          <input type="text" name="issue_date" id="issue_date" onfocus="(this.type='date')" onblur="if(this.value==''){this.type='text'}" class="form-control" placeholder="Issued date" required>
+
+          <label for="expiry_date" class="sr-only">Expiry date</label>
+          <input type="text" name="expiry_date" id="expiry_date" onfocus="(this.type='date')" onblur="if(this.value==''){this.type='text'}" class="form-control" placeholder="Expiry date">
+
+          <label for="vhash" class="sr-only">Verification hash</label>
+          <input type="text" name="vhash" id="vhash" class="form-control" placeholder="Verification hash" required>
+
+          <input id="btnSignUp" class="btn btn-lg btn-primary btn-block" type="submit" name="submit" value="Submit">
+        </form>
+
+      </div>
+      </div>
+
+    <footer>
+        <p>&copy; University of Bedfordshire 2018</p>
+    </footer>
+  </body>
+</html>

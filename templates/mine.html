@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Vericert</title>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/main.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <style>
+  table {
+      border-collapse: collapse;
+      table-layout: auto;
+      width: 100%;
+      word-wrap: break-word;
+  }
+
+  td, th {
+      border: 1px solid;
+      text-align: left;
+      padding: 8px;
+  }
+
+  /* tr:nth-child(even) {
+      background-color: #405f89;
+      color: white; */
+  }
+  </style>
+  </head>
+
+<body>
+  <nav class="navbar navbar-light bg-light">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#"><img src="../static/images/logo_white.png" alt="VeriCert"/></a>
+    </div>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="nav-item" >
+            <a class="nav-link" href="chain">Blocks</a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="new">New Transaction</a></li>
+          <li class="nav-item active">
+            <a class="nav-link" href="mine_block">Mine Block</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="nodes">Nodes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="update">Get Updates</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="logout">Sign Out</a>
+          </li>
+        </ul>
+      </div>
+      </nav>
+
+      <div class="container">
+
+        <h3>There are {{ length }} pending transaction(s) to mine</h3>
+        {% if current_transactions|length > 0 %}
+        {% set count = 0 %}
+        <table>
+        <form action="mine" method="get">
+          <tr>
+            <th>Issuing body</th>
+            <th>Candidate name</th>
+            <th>Candidate Degree</th>
+            <th>Issue date</th>
+            <th colspan="2">Verification hash</th>
+          </tr>
+          {% for transaction in current_transactions %}
+          <tr>
+            <td>{{ transaction['issuing_body'] }}</td>
+            <td>{{ transaction['candidate_name'] }}</td>
+            <td>{{ transaction['candidate_degree'] }}</td>
+            <td>{{ transaction['issue_date'] }}</td>
+            <td style="border-right: 0px;">{{ transaction['vhash'] }}</td>
+            <td style="border-left: 0px;"><button type="button" class="btn btn-primary" onclick="location.href = 'mine_block?index={{ count }}'">Delete</button></td>
+          </tr>
+          {% set count = count + 1 %}
+          {% endfor %}
+          <tr>
+            <td colspan="6" style="border: 0px;"><button class="btn btn-lg btn-primary" type="submit" name="submit">Mine transactions</button></td>
+          </tr>
+        </form>
+      </table>
+        {% endif %}
+
+    </div>
+
+    <footer>
+        <p>&copy; University of Bedfordshire 2018</p>
+    </footer>
+  </body>
+</html>
