@@ -1,1 +1,20 @@
+# Created by https://www.gitignore.io/api/virtualenv
+# Edit at https://www.gitignore.io/?templates=virtualenv
 
+### VirtualEnv ###
+# Virtualenv
+.Python
+[Bb]in
+[Ii]nclude
+[Ll]ib
+[Ll]ib64
+[Ll]ocal
+[Ss]cripts
+pyvenv.cfg
+/venv
+pip-selfcheck.json
+/__pycache__
+/keys
+
+
+# End of https://www.gitignore.io/api/virtualenv
