@@ -18,6 +18,7 @@ class Blockchain:
 	def __init__(self):
 		self.current_transactions = ["Genesis block"]
 		self.chain = []
+		self.api_key = ["VU7MgAVEMV0P5dRc4MhVfAqI3zXbO5wiS741cQXLT7lFgKoO"]
 		self.dSignatures = []
 		self.nodes = hosts.process_hosts(hosts.net) #Initialize nodes from the hosts module
 		self.genesis_creation = datetime.datetime.today() #Set a genesis block creation time e.g datetime.datetime(2018,3,30,12)
@@ -25,22 +26,31 @@ class Blockchain:
 		# Create the genesis block
 		self.new_block(index = 0, timestamp = self.genesis_creation, previous_hash ='0')
 
-	def new_transaction(self, iBody, cName, cDegree, iDate, eDate, vHash, sAddress, dSignature, publicKey):
-		self.dSignatures.append(dSignature)
+	def new_transaction(self, iBody, cName, cDegree, iDate, eDate, vHash, node_identifier, dSignature):
+		_id = len(self.current_transactions) + 1
+		self.dSignatures.append({
+			'id': _id,
+			'dSignature': dSignature
+		})
 
 		self.current_transactions.append({
+		'id': _id,
 		'issuing_body': iBody,
 		'candidate_name': cName,
 		'candidate_degree': cDegree,
 		'issue_date': iDate,
 		'expiry_date': eDate,
 		'vhash': vHash,
-		'senderAddress': sAddress,
-		'dSignature': dSignature,
-		'publicKey': publicKey,
+		'senderAddress': node_identifier,
 		})
 
 		return self.last_block['index'] + 1
+
+	def update_transaction(self, index, data):
+		self.current_transactions[index].update(data)
+
+	def delete_transaction(self, index):
+		del self.current_transactions[index]
 
 	def new_block(self, index, timestamp, previous_hash=None):
 		block = {
@@ -72,7 +82,7 @@ class Blockchain:
 				return str(o)
 			return o.__dict__
 
-		# We make sure that the dictionary is ordered or we'll have inconsistent hashes
+		# make sure that the dictionary is ordered or we'll have inconsistent hashes
 		block_string = json.dumps(block, sort_keys=True, default=jdefault).encode()
 		return hashlib.sha256(block_string).hexdigest()
 
