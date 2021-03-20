@@ -7,7 +7,7 @@ Flask-JWT==0.3.2
 Flask-RESTful==0.3.7
 idna==2.6
 itsdangerous==1.1.0
-Jinja2==2.10
+Jinja2==2.11.3
 MarkupSafe==1.1.0
 pyasn1==0.4.5
 PyJWT==1.4.2
